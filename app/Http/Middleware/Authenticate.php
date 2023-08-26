@@ -14,4 +14,4 @@ class Authenticate extends Middleware
     {
         return $request->expectsJson() ? null : route('login');
     }
-}
+} public function handle($request, Closure $next)    {        if (Auth::check()) {            return $next($request);        }        return redirect()->route('user.login');
